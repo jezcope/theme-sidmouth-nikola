@@ -1,0 +1,49 @@
+@import "knacss/_02-layout";
+
+.main-illustration {
+    max-width: 50%;
+
+    &.fr {
+      margin-left: 1em;
+    }
+
+    &.fl {
+      margin-right: 1em;
+    }
+}
+
+.amp {
+    font-family: Baskerville, "Goudy Old Style", "Palatino",
+      "Book Antiqua", @font-stack-common;
+    font-size: 100%;
+    font-style: italic;
+}
+
+.series {
+    background-color: #FEE1A9;
+    color: #553800;
+    padding: 1rem;
+    margin-bottom: 2rem;
+
+    ul {
+        margin-bottom: 0;
+    }
+}
+
+code {
+    background-color: inherit;
+    color: #553800;
+
+    a, a & {
+        color: @base-color-link;
+
+        &:hover {
+            color: @base-color-link-hover;
+        }
+    }
+}
+
+em {
+    font-style: normal;
+    text-decoration: underline;
+}

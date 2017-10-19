@@ -1,0 +1,14 @@
+## -*- coding: utf-8 -*-
+
+<%def name="html_footer()">
+  <footer id="main-footer" class="container main_footer">
+    <div class="container nav foot no-print">
+      <a class="toplink" href="#">back to top</a>
+    </div>
+
+    %if content_footer:
+        <div class="container credits footline">${content_footer}</div>
+    %endif
+    ${template_hooks['page_footer']()}
+  </footer>
+</%def>

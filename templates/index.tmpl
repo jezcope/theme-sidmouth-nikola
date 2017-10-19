@@ -1,0 +1,49 @@
+## -*- coding: utf-8 -*-
+<%namespace name="helper" file="index_helper.tmpl"/>
+<%namespace name="math" file="math_helper.tmpl"/>
+<%namespace name="comments" file="comments_helper.tmpl"/>
+<%namespace name="pagination" file="pagination_helper.tmpl"/>
+<%namespace name="feeds_translations" file="feeds_translations_helper.tmpl" import="*"/>
+<%inherit file="base.tmpl"/>
+
+<%block name="extra_head">
+    ${parent.extra_head()}
+    % if posts and (permalink == '/' or permalink == '/' + index_file):
+        <link rel="prefetch" href="${posts[0].permalink()}" type="text/html">
+    % endif
+    ${math.math_styles_ifposts(posts)}
+</%block>
+
+<%block name="content">
+<%block name="content_header">
+    ${feeds_translations.translation_link()}
+</%block>
+% if 'main_index' in pagekind:
+    ${front_index_header}
+% endif
+% if page_links:
+    ${pagination.page_navigation(current_page, page_links, prevlink, nextlink, prev_next_links_reversed)}
+% endif
+<section id="main-content" class="container main_content homepage">
+  <header class="container header">
+    ### TODO: last updated timestamp
+  </header>
+% for post in posts:
+    <article class="container content summary h-entry post-${post.meta('type')}">
+      <div class="container hat">
+        <h2 class="p-name"><a href="${post.permalink()}" class="u-url">${post.title()|h}</a></h2>
+        <time datetime="${post.formatted_date('webiso')}" title="${post.formatted_date(date_format)|h}">${post.formatted_date(date_format)|h}</time>
+      </div>
+      <p class="container content">
+        ${post.description()|h}
+      </p>
+      <div class="container readlink">
+        <a href="${post.permalink()}">Read more &rarr;</a>
+      </div>
+    </article>
+% endfor
+</section>
+${helper.html_pager()}
+${comments.comment_link_script()}
+${math.math_scripts_ifposts(posts)}
+</%block>
