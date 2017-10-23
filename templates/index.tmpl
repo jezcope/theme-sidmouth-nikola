@@ -28,10 +28,16 @@
   <header class="container header">
     ### TODO: last updated timestamp
   </header>
-% for post in posts:
+  % for post in posts:
     <article class="container content summary h-entry post-${post.meta('type')}">
       <div class="container hat">
-        <h2 class="p-name"><a href="${post.permalink()}" class="u-url">${post.title()|h}</a></h2>
+        <h2 class="p-name"><a href="${post.permalink()}" class="u-url">
+          % if post.is_draft:
+          DRAFT ::
+          % endif
+          ${post.title()|h}
+        </a></h2>
+        ### TODO: reading time
         <time datetime="${post.formatted_date('webiso')}" title="${post.formatted_date(date_format)|h}">${post.formatted_date(date_format)|h}</time>
       </div>
       <p class="container content">
@@ -41,7 +47,7 @@
         <a href="${post.permalink()}">Read more &rarr;</a>
       </div>
     </article>
-% endfor
+  % endfor
 </section>
 ${helper.html_pager()}
 ${comments.comment_link_script()}
