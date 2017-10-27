@@ -48,7 +48,7 @@
 
 <%def name="topic_link(topic)">
   <% topic_url = topic.replace(' ', '-') %>
-  <a href="/topics/${topic_url|u}/">${topic}</a>
+  <a href="/tags/${topic_url|u}/">${topic}</a>
 </%def>
 
 <%def name="html_navigation_links()">
