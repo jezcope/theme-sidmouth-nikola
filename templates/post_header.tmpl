@@ -62,4 +62,43 @@
         </div>
         ${html_translations(post)}
     </header>
+    ${html_series_nav(post)}
+</%def>
+
+<%def name="html_series_nav(post)">
+  <% from markdown import markdown %>
+  %if series and post.meta[lang]['series']:
+    <%
+      series_tag = post.meta[lang]['series']
+      series_info = series[series_tag]
+      %>
+    <nav class="container series">
+    <div class="series">
+      <p>
+        ## Slightly odd subscript below is to strip off <p> and </p>
+        ## TODO: This could be done better!
+        This post is part of a series on ${markdown(series_info.description)[3:-4]}.
+        See the rest of the series:
+      </p>
+
+      <ul>
+        %for other_post in series_info.posts:
+        <li>
+          %if other_post is post:
+            <span class="current-page">
+          %else:
+            <a href="${other_post.permalink()}">
+          %endif
+          ${other_post.title()}
+          %if other_post is post:
+            <strong>← you are here</strong></span>
+          %else:
+            </a>
+          %endif
+        </li>
+        %endfor
+      </ul>
+      </div>
+    </nav>
+  %endif
 </%def>
