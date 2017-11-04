@@ -20,8 +20,7 @@
     % if show_blog_title:
     <div class="container title h1-like">
       <a class="baselink" href="${blog_url}">
-        % if brand is not UNDEFINED:
-          ### TODO: ensure this is markdowned
+        % if brand:
           ${brand}
         % else:
           ${blog_title}
@@ -30,7 +29,7 @@
     </div>
     % endif
 
-    % if topics is not UNDEFINED:
+    % if topics:
       <div class="container topline">
         % if topline:
           ${topline}
@@ -67,22 +66,22 @@
 
   <div class="container nav secondary no-print">
     ### TODO: *all* the other social networks...
-    %if social_email is not UNDEFINED:
+    %if social_email:
       ${social_link('email', 'mailto:' + social_email, 'envelope-square')}
     %endif 
-    %if social_github is not UNDEFINED:
+    %if social_github:
       ${social_link('github', 'https://github.com/' + social_github, 'github-square')}
     %endif
-    %if social_linkedin is not UNDEFINED:
+    %if social_linkedin:
       ${social_link('linkedin', 'https://www.linkedin.com/in/' + social_linkedin, 'linkedin-square')}
     %endif
-    %if social_twitter is not UNDEFINED:
+    %if social_twitter:
       ${social_link('twitter', 'https://twitter.com/' + social_twitter, 'twitter-square')}
     %endif
   </div>
 
   <div class="container nav badges no-print">
-    %if wercker is not UNDEFINED:
+    %if wercker:
       <a href="https://app.wercker.com/project/byKey/${wercker}">
         <img alt="Wercker status" src="https://app.wercker.com/status/${wercker}/s/master">
       </a>
