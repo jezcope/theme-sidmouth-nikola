@@ -15,6 +15,7 @@
 </%block>
 
 <%block name="content">
+<% from markdown import markdown %>
 <%block name="content_header">
     ${feeds_translations.translation_link()}
 </%block>
@@ -37,12 +38,14 @@
           % endif
           ${post.title()|h}
         </a></h2>
-        ### TODO: reading time
-        <time datetime="${post.formatted_date('webiso')}" title="${post.formatted_date(date_format)|h}">${post.formatted_date(date_format)|h}</time>
+        <div class="metas">
+          <time datetime="${post.formatted_date('webiso')}" title="${post.formatted_date(date_format)|h}">${post.formatted_date(date_format)|h}</time>
+          &middot; Read in about ${post.reading_time} min
+        </div>
       </div>
-      <p class="container content">
-        ${post.description()|h}
-      </p>
+      <div class="container content">
+        ${post.description()|markdown}
+      </div>
       <div class="container readlink">
         <a href="${post.permalink()}">Read more &rarr;</a>
       </div>
