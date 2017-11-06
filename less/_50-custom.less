@@ -20,8 +20,8 @@
 }
 
 .series {
-    background-color: #FEE1A9;
-    color: #553800;
+    background-color: lighten(@headings-3-color, 50%);
+    color: @headings-3-color;
     padding: 1rem;
     margin-bottom: 2rem;
 
@@ -46,6 +46,31 @@ code {
 em {
     font-style: normal;
     text-decoration: underline;
+}
+
+div.admonition {
+    margin: 0 0 2rem 0;
+    padding: 15px;
+    border: none;
+    background-color: lighten(@headings-3-color, 50%);
+
+    &.intro {
+        background-color: lighten(@secondary-color, 40%);
+    }
+
+
+    p.admonition-title {
+        font-family: @font-stack-headings;
+        background-color: lighten(@headings-3-color, 50%);
+        padding-top: 0;
+        margin-top: -4px;
+        margin-bottom: 15px;
+        border-bottom: 1px lighten(@headings-3-color, 40%) solid;
+    }
+
+    p:last-child {
+        margin-bottom: 0;
+    }
 }
 
 dt {
