@@ -76,3 +76,26 @@ div.admonition {
 dt {
   font-weight: bold;
 }
+
+.prompt {
+    background-color: white;
+
+    .text_cell & {
+        display: none;
+    }
+}
+
+#notebook {
+    .cell {
+        border: none;
+        padding: 0;
+    }
+
+    .code_cell {
+        padding-bottom: 2rem;
+    }
+
+    .rendered_html em {
+        font-style: normal;
+    }
+}
