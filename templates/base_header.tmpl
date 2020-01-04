@@ -86,6 +86,11 @@
         <img alt="Wercker status" src="https://app.wercker.com/status/${wercker}/s/master">
       </a>
     %endif
+    %if gitlab_ci:
+      <a href="https://gitlab.com/${gitlab}/commits/master">
+        <img alt="pipeline status" src="https://gitlab.com/${gitlab}/badges/master/pipeline.svg" />
+      </a>
+    %endif
   </div>
 </%def>
 
